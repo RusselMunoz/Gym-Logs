@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +9,10 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 public class gymPayment extends javax.swing.JFrame {
 
@@ -31,7 +35,7 @@ public class gymPayment extends javax.swing.JFrame {
         Statement st = con.createStatement();
         
         DefaultTableModel model = new DefaultTableModel(new String[]{"ID", "Name", "Plan", "Amount", "Date paid", "Date expiration"}, 0);
-        jTable1.setModel(model);
+        paymentTable.setModel(model);
         
         String sql = "SELECT member.id, member.name, member.plan, payment.amount, payment.date_paid, payment.date_expiration " + "FROM member " + "JOIN payment ON member.id = payment.id";
         ResultSet rs = st.executeQuery(sql);
@@ -57,7 +61,7 @@ public class gymPayment extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        Header = new javax.swing.JPanel();
         UpdateDelete = new javax.swing.JButton();
         NewMember = new javax.swing.JButton();
         Profile = new javax.swing.JButton();
@@ -65,15 +69,17 @@ public class gymPayment extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         Logs = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        payment_logs = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        paymentTable = new javax.swing.JTable();
         search = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        searchButton_Payment = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new Color(98, 39, 24));
+        Header.setBackground(new Color(98, 39, 24));
 
         UpdateDelete.setBackground(new Color(96, 81, 41));
         UpdateDelete.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,11 +147,11 @@ public class gymPayment extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
+        Header.setLayout(HeaderLayout);
+        HeaderLayout.setHorizontalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(NewMember)
                 .addGap(18, 18, 18)
@@ -160,9 +166,9 @@ public class gymPayment extends javax.swing.JFrame {
                 .addComponent(Logs, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        HeaderLayout.setVerticalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(UpdateDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(NewMember, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(Profile, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,18 +179,48 @@ public class gymPayment extends javax.swing.JFrame {
 
         jPanel2.setBackground(new Color(210, 97, 69));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Payment Logs");
+        payment_logs.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        payment_logs.setText("Payment Logs");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jScrollPane1PropertyChange(evt);
+            }
+        });
+
+        paymentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
                 "Member ID", "Name", "Plan", "Amount", "Date Paid", "Date Expiration"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        paymentTable.setShowGrid(true);
+        paymentTable.getTableHeader().setReorderingAllowed(false);
+        paymentTable.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                paymentTablePropertyChange(evt);
+            }
+        });
+        jScrollPane1.setViewportView(paymentTable);
+        if (paymentTable.getColumnModel().getColumnCount() > 0) {
+            paymentTable.getColumnModel().getColumn(0).setResizable(false);
+            paymentTable.getColumnModel().getColumn(1).setResizable(false);
+            paymentTable.getColumnModel().getColumn(2).setResizable(false);
+            paymentTable.getColumnModel().getColumn(3).setResizable(false);
+            paymentTable.getColumnModel().getColumn(4).setResizable(false);
+            paymentTable.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -192,8 +228,23 @@ public class gymPayment extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("Search");
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jTable1.setShowGrid(true);
+        jScrollPane2.setViewportView(jTable1);
+
+        searchButton_Payment.setText("Search");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -203,25 +254,27 @@ public class gymPayment extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(payment_logs)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel9))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1040, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(searchButton_Payment))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(payment_logs, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchButton_Payment)
+                    .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -229,13 +282,13 @@ public class gymPayment extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -278,8 +331,39 @@ public class gymPayment extends javax.swing.JFrame {
     }//GEN-LAST:event_ProfileActionPerformed
 
     private void LogsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogsActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        gymLogs x = new gymLogs();
+                x.setVisible(true);
+                x.loadData();
+                x.setLocationRelativeTo(null);
     }//GEN-LAST:event_LogsActionPerformed
+
+    private void paymentTablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_paymentTablePropertyChange
+    JTableHeader tableHeader = paymentTable.getTableHeader();
+    //profileTable.setBack
+    
+    // Create a custom renderer for the header
+    DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+    headerRenderer.setBackground(Color.decode("#191919"));
+    headerRenderer.setForeground(Color.WHITE);
+    headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+    
+     // Set header height
+     tableHeader.setPreferredSize(new Dimension(tableHeader.getPreferredSize().width, 40));
+
+
+    // Set the custom renderer for each column
+    for (int i = 0; i < paymentTable.getColumnModel().getColumnCount(); i++) {
+        paymentTable.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+    }
+
+    // This is optional to ensure the header re-renders properly
+    tableHeader.repaint();
+    }//GEN-LAST:event_paymentTablePropertyChange
+
+    private void jScrollPane1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jScrollPane1PropertyChange
+    jScrollPane1.getViewport().setBackground(new Color(210, 97, 69));
+    }//GEN-LAST:event_jScrollPane1PropertyChange
 
     /**
      * @param args the command line arguments
@@ -320,18 +404,20 @@ public class gymPayment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Header;
     private javax.swing.JButton Logs;
     private javax.swing.JButton NewMember;
     private javax.swing.JButton Profile;
     private javax.swing.JButton UpdateDelete;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable paymentTable;
+    private javax.swing.JLabel payment_logs;
     private javax.swing.JTextField search;
+    private javax.swing.JButton searchButton_Payment;
     // End of variables declaration//GEN-END:variables
 }

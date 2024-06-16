@@ -32,10 +32,10 @@ public class gymsystem extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel(logo);
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        adminUsername = new javax.swing.JTextField();
+        loginButton = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        passwordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
@@ -56,37 +56,37 @@ public class gymsystem extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setEditable(false);
-        jTextField1.setForeground(Color.lightGray);
-        jTextField1.setText("Enter Admin Username");
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        adminUsername.setEditable(false);
+        adminUsername.setForeground(Color.lightGray);
+        adminUsername.setText("Enter Admin Username");
+        adminUsername.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+                adminUsernameFocusLost(evt);
             }
         });
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        adminUsername.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField1MouseClicked(evt);
+                adminUsernameMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jTextField1MouseExited(evt);
+                adminUsernameMouseExited(evt);
             }
         });
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        adminUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                adminUsernameActionPerformed(evt);
             }
         });
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        adminUsername.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField1KeyPressed(evt);
+                adminUsernameKeyPressed(evt);
             }
         });
 
-        jButton1.setText("Log In");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setText("Log In");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
 
@@ -98,42 +98,42 @@ public class gymsystem extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jPasswordField1FocusLost(evt);
+                passwordFieldFocusLost(evt);
             }
         });
-        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        passwordField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPasswordField1MouseClicked(evt);
+                passwordFieldMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPasswordField1MouseExited(evt);
+                passwordFieldMouseExited(evt);
             }
         });
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                passwordFieldActionPerformed(evt);
             }
         });
-        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jPasswordField1KeyPressed(evt);
+                passwordFieldKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jPasswordField1KeyTyped(evt);
+                passwordFieldKeyTyped(evt);
             }
         });
-        jPasswordField1.setEchoChar((char)0);
-        jPasswordField1.setText("Enter Password");
-        jPasswordField1.setForeground(Color.lightGray);
-        jPasswordField1.setEditable(false);
+        passwordField.setEchoChar((char)0);
+        passwordField.setText("Enter Password");
+        passwordField.setForeground(Color.lightGray);
+        passwordField.setEditable(false);
 
-        if("".equals(jPasswordField1.getText())){
-            jPasswordField1.setEchoChar((char)0);
-            jPasswordField1.setText("Enter Password");
-            jPasswordField1.setForeground(Color.lightGray);
-            jPasswordField1.setEditable(false);
+        if("".equals(passwordField.getText())){
+            passwordField.setEchoChar((char)0);
+            passwordField.setText("Enter Password");
+            passwordField.setForeground(Color.lightGray);
+            passwordField.setEditable(false);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -144,26 +144,26 @@ public class gymsystem extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jCheckBox1)
-                            .addComponent(jTextField1)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE))))
+                            .addComponent(adminUsername)
+                            .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(190, 190, 190)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(adminUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -187,53 +187,53 @@ public class gymsystem extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void adminUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_adminUsernameActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if(jCheckBox1.isSelected()){
-            jPasswordField1.setEchoChar((char)0);
+            passwordField.setEchoChar((char)0);
         }else{
-            if("Enter Password".equals(jPasswordField1.getText())){
-                jPasswordField1.setEchoChar((char)0);
+            if("Enter Password".equals(passwordField.getText())){
+                passwordField.setEchoChar((char)0);
             }else{
-            jPasswordField1.setEchoChar('*');
+            passwordField.setEchoChar('*');
             }
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
-        if("Enter Admin Username".equals(jTextField1.getText())){
-            jTextField1.setText("");
-            jTextField1.setForeground(Color.black);
-            jTextField1.setEditable(true);
+    private void adminUsernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminUsernameMouseClicked
+        if("Enter Admin Username".equals(adminUsername.getText())){
+            adminUsername.setText("");
+            adminUsername.setForeground(Color.black);
+            adminUsername.setEditable(true);
         }
-    }//GEN-LAST:event_jTextField1MouseClicked
+    }//GEN-LAST:event_adminUsernameMouseClicked
 
-    private void jTextField1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseExited
+    private void adminUsernameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminUsernameMouseExited
        
-    }//GEN-LAST:event_jTextField1MouseExited
+    }//GEN-LAST:event_adminUsernameMouseExited
 
-    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
-        if("Enter Password".equals(jPasswordField1.getText())){
-                jPasswordField1.setText("");
-                jPasswordField1.setForeground(Color.black);
-                jPasswordField1.setEditable(true);
-                jPasswordField1.setEchoChar('*');
+    private void passwordFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordFieldMouseClicked
+        if("Enter Password".equals(passwordField.getText())){
+                passwordField.setText("");
+                passwordField.setForeground(Color.black);
+                passwordField.setEditable(true);
+                passwordField.setEchoChar('*');
         }
-    }//GEN-LAST:event_jPasswordField1MouseClicked
+    }//GEN-LAST:event_passwordFieldMouseClicked
 
-    private void jPasswordField1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseExited
+    private void passwordFieldMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordFieldMouseExited
        
-    }//GEN-LAST:event_jPasswordField1MouseExited
+    }//GEN-LAST:event_passwordFieldMouseExited
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         if("Admin1".equals(jTextField1.getText()) && "Admin123".equals(jPasswordField1.getText())){
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+         if("Admin1".equals(adminUsername.getText()) && "Admin123".equals(passwordField.getText())){
             dispose();
             NewMember x = new NewMember();
                 x.setVisible(true);
@@ -241,11 +241,11 @@ public class gymsystem extends javax.swing.JFrame {
          }else{
             JOptionPane.showMessageDialog(new JFrame(), "Incorrenct Username or Password", "Dialog", JOptionPane.ERROR_MESSAGE);
          }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_loginButtonActionPerformed
 
-    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+    private void adminUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_adminUsernameKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            if("Admin1".equals(jTextField1.getText()) && "Admin123".equals(jPasswordField1.getText())){
+            if("Admin1".equals(adminUsername.getText()) && "Admin123".equals(passwordField.getText())){
             dispose();
             NewMember x = new NewMember();
                 x.setVisible(true);
@@ -254,16 +254,16 @@ public class gymsystem extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "Incorrenct Username or Password", "Dialog", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_jTextField1KeyPressed
+    }//GEN-LAST:event_adminUsernameKeyPressed
 
-    private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
         char c = evt.getKeyChar();
         if(Character.isLetterOrDigit(c)){
             jCheckBox1.setVisible(true);
         }
         
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            if("Admin1".equals(jTextField1.getText()) && "Admin123".equals(jPasswordField1.getText())){
+            if("Admin1".equals(adminUsername.getText()) && "Admin123".equals(passwordField.getText())){
             dispose();
             NewMember x = new NewMember();
                 x.setVisible(true);
@@ -272,42 +272,42 @@ public class gymsystem extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "Incorrenct Username or Password", "Dialog", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_jPasswordField1KeyPressed
+    }//GEN-LAST:event_passwordFieldKeyPressed
 
-    private void jPasswordField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyTyped
+    private void passwordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1KeyTyped
+    }//GEN-LAST:event_passwordFieldKeyTyped
 
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if("".equals(jTextField1.getText())){
-            jTextField1.setText("Enter Admin Username");
-            jTextField1.setForeground(Color.lightGray);
-            jTextField1.setEditable(false);
+    private void adminUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_adminUsernameFocusLost
+        if("".equals(adminUsername.getText())){
+            adminUsername.setText("Enter Admin Username");
+            adminUsername.setForeground(Color.lightGray);
+            adminUsername.setEditable(false);
         }
-    }//GEN-LAST:event_jTextField1FocusLost
+    }//GEN-LAST:event_adminUsernameFocusLost
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        jTextField1.setFocusable(false);
-        jTextField1.setFocusable(true);
-        jPasswordField1.setFocusable(false);
-        jPasswordField1.setFocusable(true);
+        adminUsername.setFocusable(false);
+        adminUsername.setFocusable(true);
+        passwordField.setFocusable(false);
+        passwordField.setFocusable(true);
     }//GEN-LAST:event_jPanel1MouseClicked
 
-    private void jPasswordField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusLost
-         if("".equals(jPasswordField1.getText())){
-            jPasswordField1.setEchoChar((char)0);
-            jPasswordField1.setText("Enter Password");
-            jPasswordField1.setForeground(Color.lightGray);
-            jPasswordField1.setEditable(false);
+    private void passwordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusLost
+         if("".equals(passwordField.getText())){
+            passwordField.setEchoChar((char)0);
+            passwordField.setText("Enter Password");
+            passwordField.setForeground(Color.lightGray);
+            passwordField.setEditable(false);
             jCheckBox1.setVisible(false);
         }
-    }//GEN-LAST:event_jPasswordField1FocusLost
+    }//GEN-LAST:event_passwordFieldFocusLost
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        jTextField1.setFocusable(false);
-        jTextField1.setFocusable(true);
-        jPasswordField1.setFocusable(false);
-        jPasswordField1.setFocusable(true);
+        adminUsername.setFocusable(false);
+        adminUsername.setFocusable(true);
+        passwordField.setFocusable(false);
+        passwordField.setFocusable(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
@@ -348,11 +348,11 @@ public class gymsystem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField adminUsername;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JPasswordField passwordField;
     // End of variables declaration//GEN-END:variables
 }

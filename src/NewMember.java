@@ -47,11 +47,6 @@ public class NewMember extends javax.swing.JFrame {
                 em = rs.getString("emergency_contact_name");
                 eb = rs.getString("emergency_contact_number");
                 p = rs.getString("plan");
-                am = rs.getString("amount");
-                dp = rs.getString("date_paid");
-                dn = rs.getString("date_expiration");
-                tn = rs.getString("time_in");
-                tt = rs.getString("time_out");
             }
         }catch(Exception e){
         System.out.println("Error " + e.getMessage());
@@ -67,7 +62,7 @@ public class NewMember extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        Header = new javax.swing.JPanel();
         UpdateDelete = new javax.swing.JButton();
         NewMember = new javax.swing.JButton();
         Profile = new javax.swing.JButton();
@@ -75,27 +70,27 @@ public class NewMember extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         Logs = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        a = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        b = new javax.swing.JTextField();
+        new_member = new javax.swing.JLabel();
+        name_Text = new javax.swing.JLabel();
+        name_Label = new javax.swing.JTextField();
+        mobilenumber_Text = new javax.swing.JLabel();
+        mobile_numberLabel = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        c = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        e = new javax.swing.JTextField();
-        d = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
-        f = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        g = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        ageLabel = new javax.swing.JTextField();
+        sex_Text = new javax.swing.JLabel();
+        emergencycontactName_Text = new javax.swing.JLabel();
+        contactname_Label = new javax.swing.JTextField();
+        sexComboBox = new javax.swing.JComboBox<>();
+        emergencycontactNumber_Text = new javax.swing.JLabel();
+        contactnumber_Label = new javax.swing.JTextField();
+        plan_Text = new javax.swing.JLabel();
+        planComboBox = new javax.swing.JComboBox<>();
+        addMember = new javax.swing.JButton();
+        clearAll = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new Color(98, 39, 24));
+        Header.setBackground(new Color(98, 39, 24));
 
         UpdateDelete.setBackground(new Color(96, 81, 41));
         UpdateDelete.setForeground(new java.awt.Color(255, 255, 255));
@@ -163,11 +158,11 @@ public class NewMember extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
+        Header.setLayout(HeaderLayout);
+        HeaderLayout.setHorizontalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(NewMember)
                 .addGap(18, 18, 18)
@@ -182,9 +177,9 @@ public class NewMember extends javax.swing.JFrame {
                 .addComponent(Logs, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        HeaderLayout.setVerticalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(UpdateDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(NewMember, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(Profile, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -195,61 +190,61 @@ public class NewMember extends javax.swing.JFrame {
 
         jPanel2.setBackground(new Color(210, 97, 69));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("New Member");
+        new_member.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        new_member.setText("New Member");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Name");
+        name_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        name_Text.setText("Name");
 
-        a.addActionListener(new java.awt.event.ActionListener() {
+        name_Label.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aActionPerformed(evt);
+                name_LabelActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Mobile Number");
+        mobilenumber_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        mobilenumber_Text.setText("Mobile Number");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Age");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Sex");
+        sex_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sex_Text.setText("Sex");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Emergency Contact Name");
+        emergencycontactName_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        emergencycontactName_Text.setText("Emergency Contact Name");
 
-        d.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Male", "Female" }));
-        d.addActionListener(new java.awt.event.ActionListener() {
+        sexComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Male", "Female" }));
+        sexComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dActionPerformed(evt);
+                sexComboBoxActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Emergency Contact Number");
+        emergencycontactNumber_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        emergencycontactNumber_Text.setText("Emergency Contact Number");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("Plan");
+        plan_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        plan_Text.setText("Plan");
 
-        g.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Daily", "Half Month", "Monthly" }));
-        g.addActionListener(new java.awt.event.ActionListener() {
+        planComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Daily", "Half Month", "Monthly" }));
+        planComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gActionPerformed(evt);
+                planComboBoxActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Add Member");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addMember.setText("Add Member");
+        addMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addMemberActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Clear All");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        clearAll.setText("Clear All");
+        clearAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                clearAllActionPerformed(evt);
             }
         });
 
@@ -259,71 +254,71 @@ public class NewMember extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(430, 430, 430)
-                .addComponent(jLabel1)
+                .addComponent(new_member)
                 .addGap(89, 89, 89))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mobilenumber_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mobile_numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(c, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(d, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sex_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sexComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(e, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(f, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(g, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactname_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emergencycontactName_Text)
+                    .addComponent(emergencycontactNumber_Text)
+                    .addComponent(contactnumber_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plan_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(planComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addMember, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(clearAll, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(60, 60, 60))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(new_member, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(name_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emergencycontactName_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(e, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(name_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactname_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mobilenumber_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emergencycontactNumber_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(f, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mobile_numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactnumber_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(plan_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(c, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(g, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(planComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sex_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(d, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sexComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(addMember, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(clearAll, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(160, Short.MAX_VALUE))
         );
 
@@ -332,12 +327,12 @@ public class NewMember extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -365,25 +360,25 @@ public class NewMember extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NewMemberActionPerformed
 
-    private void dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dActionPerformed
+    private void sexComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dActionPerformed
+    }//GEN-LAST:event_sexComboBoxActionPerformed
 
-    private void gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gActionPerformed
+    private void planComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_gActionPerformed
+    }//GEN-LAST:event_planComboBoxActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        a.setText("");
-        b.setText("");
-        c.setText("");
-        e.setText("");
-        f.setText("");
-        d.setSelectedItem(" ");
-        g.setSelectedItem(" ");
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void clearAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearAllActionPerformed
+        name_Label.setText("");
+        mobile_numberLabel.setText("");
+        ageLabel.setText("");
+        contactname_Label.setText("");
+        contactnumber_Label.setText("");
+        sexComboBox.setSelectedItem(" ");
+        planComboBox.setSelectedItem(" ");
+    }//GEN-LAST:event_clearAllActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberActionPerformed
         String nE, mR, aE, sX, eE, eR, pN, query, query2, query3, dP, dE, aM;
         
         try{
@@ -396,19 +391,19 @@ public class NewMember extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection(url, user, pass);
             Statement st = con.createStatement();
             
-            if("".equals(a.getText())){
+            if("".equals(name_Label.getText())){
                 JOptionPane.showMessageDialog(new JFrame(), "Name is required", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }else if("".equals(b.getText())){
+            }else if("".equals(mobile_numberLabel.getText())){
                 JOptionPane.showMessageDialog(new JFrame(), "Mobile Number is required", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }else if("".equals(c.getText())){
+            }else if("".equals(ageLabel.getText())){
                 JOptionPane.showMessageDialog(new JFrame(), "Age is required", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }else if(" ".equals(d.getSelectedItem())){
+            }else if(" ".equals(sexComboBox.getSelectedItem())){
                 JOptionPane.showMessageDialog(new JFrame(), "Select the following choices below", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }else if("".equals(e.getText())){
+            }else if("".equals(contactname_Label.getText())){
                 JOptionPane.showMessageDialog(new JFrame(), "Name is required", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }else if("".equals(f.getText())){
+            }else if("".equals(contactnumber_Label.getText())){
                 JOptionPane.showMessageDialog(new JFrame(), "Number is required", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }else if(" ".equals(g.getSelectedItem())){
+            }else if(" ".equals(planComboBox.getSelectedItem())){
                 JOptionPane.showMessageDialog(new JFrame(), "Select the following choices below", "Dialog", JOptionPane.ERROR_MESSAGE);
             }else{
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -420,13 +415,13 @@ public class NewMember extends javax.swing.JFrame {
                 String formattedExpirationDateTime = expirationDateTime.format(formatter);
                 String formattedExpirationDateTime2 = expirationDateTime2.format(formatter);
                 
-                nE = a.getText();
-                mR = b.getText();
-                aE = c.getText();
-                sX = (String) d.getSelectedItem();
-                eE = e.getText();
-                eR = f.getText();
-                pN = (String) g.getSelectedItem();
+                nE = name_Label.getText();
+                mR = mobile_numberLabel.getText();
+                aE = ageLabel.getText();
+                sX = (String) sexComboBox.getSelectedItem();
+                eE = contactname_Label.getText();
+                eR = contactnumber_Label.getText();
+                pN = (String) planComboBox.getSelectedItem();
                 
                 query = "INSERT INTO member (name, mobile_number, age, sex, emergency_contact_name, emergency_contact_number, plan) " + "VALUES ('"+nE+"', '"+mR+"', '"+aE+"', '"+sX+"', '"+eE+"', '"+eR+"', '"+pN+"')";
                 st.executeUpdate(query);
@@ -457,13 +452,13 @@ public class NewMember extends javax.swing.JFrame {
                     st.executeUpdate(query2);
                 }
                 
-                a.setText("");
-                b.setText("");
-                c.setText("");
-                e.setText("");
-                f.setText("");
-                d.setSelectedItem(" ");
-                g.setSelectedItem(" ");
+                name_Label.setText("");
+                mobile_numberLabel.setText("");
+                ageLabel.setText("");
+                contactname_Label.setText("");
+                contactnumber_Label.setText("");
+                sexComboBox.setSelectedItem(" ");
+                planComboBox.setSelectedItem(" ");
                 
                 showMessageDialog(null, "Successfully registered");
                 
@@ -473,7 +468,7 @@ public class NewMember extends javax.swing.JFrame {
         }catch(Exception e){
             System.out.println("Error " + e.getMessage());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addMemberActionPerformed
 
     private void ProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileActionPerformed
         dispose();
@@ -488,12 +483,16 @@ public class NewMember extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void LogsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogsActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        gymLogs x = new gymLogs();
+                x.setVisible(true);
+                x.loadData();
+                x.setLocationRelativeTo(null);
     }//GEN-LAST:event_LogsActionPerformed
 
-    private void aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_aActionPerformed
+    private void name_LabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_LabelActionPerformed
+        
+    }//GEN-LAST:event_name_LabelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -534,30 +533,30 @@ public class NewMember extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Header;
     private javax.swing.JButton Logs;
     private javax.swing.JButton NewMember;
     private javax.swing.JButton Profile;
     private javax.swing.JButton UpdateDelete;
-    private javax.swing.JTextField a;
-    private javax.swing.JTextField b;
-    private javax.swing.JTextField c;
-    private javax.swing.JComboBox<String> d;
-    private javax.swing.JTextField e;
-    private javax.swing.JTextField f;
-    private javax.swing.JComboBox<String> g;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton addMember;
+    private javax.swing.JTextField ageLabel;
+    private javax.swing.JButton clearAll;
+    private javax.swing.JTextField contactname_Label;
+    private javax.swing.JTextField contactnumber_Label;
+    private javax.swing.JLabel emergencycontactName_Text;
+    private javax.swing.JLabel emergencycontactNumber_Text;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField mobile_numberLabel;
+    private javax.swing.JLabel mobilenumber_Text;
+    private javax.swing.JTextField name_Label;
+    private javax.swing.JLabel name_Text;
+    private javax.swing.JLabel new_member;
+    private javax.swing.JComboBox<String> planComboBox;
+    private javax.swing.JLabel plan_Text;
+    private javax.swing.JComboBox<String> sexComboBox;
+    private javax.swing.JLabel sex_Text;
     // End of variables declaration//GEN-END:variables
 }
