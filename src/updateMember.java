@@ -263,6 +263,11 @@ public class updateMember extends javax.swing.JFrame {
         member_searchButton.setBackground(new Color(210, 97, 69));
         member_searchButton.setText("Search");
         member_searchButton.setBorder(null);
+        member_searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                member_searchButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -291,14 +296,13 @@ public class updateMember extends javax.swing.JFrame {
                     .addComponent(emergencycontactNumber_Text)
                     .addComponent(contactnumber_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(plan_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(50, 50, 50)
-                            .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(planComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(planComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60))
         );
         jPanel2Layout.setVerticalGroup(
@@ -542,6 +546,45 @@ public class updateMember extends javax.swing.JFrame {
     private void mobile_numberLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobile_numberLabelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mobile_numberLabelActionPerformed
+
+    private void member_searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_member_searchButtonActionPerformed
+        String ID;
+        int notFound = 0;
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            String url = "jdbc:mysql://localhost:3306/gym";
+            String user = "root";
+            String pass = "";
+            
+            Connection con = DriverManager.getConnection(url, user, pass);
+            Statement st = con.createStatement();
+            
+            ID = search.getText();
+            if("".equals(ID)){
+                JOptionPane.showMessageDialog(new JFrame(), "ID is required", "Dialog", JOptionPane.ERROR_MESSAGE);
+            }else{
+                String sql = "SELECT * FROM member WHERE id=" + ID;
+                ResultSet rs = st.executeQuery(sql);
+                while(rs.next()){
+                    name_Label.setText(rs.getString("name"));
+                    mobile_numberLabel.setText(rs.getString("mobile_number"));
+                    ageLabel.setText(rs.getString("age"));
+                    sexComboBox.setSelectedItem(rs.getString("sex"));
+                    contactname_Label.setText(rs.getString("emergency_contact_name"));
+                    contactnumber_Label.setText(rs.getString("emergency_contact_number"));
+                    planComboBox.setSelectedItem(rs.getString("plan"));
+                    notFound = 1;
+                    
+                    con.close();
+                }if (notFound == 0){
+                    JOptionPane.showMessageDialog(new JFrame(), "invalid ID", "Dialog", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Error" + e.getMessage());
+        }
+    }//GEN-LAST:event_member_searchButtonActionPerformed
 
     /**
      * @param args the command line arguments

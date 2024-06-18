@@ -74,7 +74,7 @@ public class gymPayment extends javax.swing.JFrame {
         paymentTable = new javax.swing.JTable();
         search = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        searchpaymentTable = new javax.swing.JTable();
         searchButton_Payment = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -230,7 +230,7 @@ public class gymPayment extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        searchpaymentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -241,10 +241,16 @@ public class gymPayment extends javax.swing.JFrame {
 
             }
         ));
-        jTable1.setShowGrid(true);
-        jScrollPane2.setViewportView(jTable1);
+        searchpaymentTable.setShowGrid(true);
+        searchpaymentTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(searchpaymentTable);
 
         searchButton_Payment.setText("Search");
+        searchButton_Payment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButton_PaymentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -365,6 +371,52 @@ public class gymPayment extends javax.swing.JFrame {
     jScrollPane1.getViewport().setBackground(new Color(210, 97, 69));
     }//GEN-LAST:event_jScrollPane1PropertyChange
 
+    private void searchButton_PaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton_PaymentActionPerformed
+        String ID;
+        int notFound = 0;
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            String url = "jdbc:mysql://localhost:3306/gym";
+            String user = "root";
+            String pass = "";
+            
+            Connection con = DriverManager.getConnection(url, user, pass);
+            Statement st = con.createStatement();
+            
+            ID = search.getText();
+            if("".equals(ID)){
+                JOptionPane.showMessageDialog(new JFrame(), "ID is required", "Dialog", JOptionPane.ERROR_MESSAGE);
+            }else{
+                String sql = "SELECT * FROM member WHERE id=" + ID;
+                ResultSet rs = st.executeQuery(sql);
+
+                DefaultTableModel model = (DefaultTableModel) searchpaymentTable.getModel();
+                model.setRowCount(0);
+                
+                if (rs.next()) {
+                    Object[] row = new Object[7];
+                    row[0] = rs.getString("name");
+                    row[1] = rs.getString("mobile_number");
+                    row[2] = rs.getString("age");
+                    row[3] = rs.getString("sex");
+                    row[4] = rs.getString("emergency_contact_name");
+                    row[5] = rs.getString("emergency_contact_number");
+                    row[6] = rs.getString("plan");
+                    
+                    model.addRow(row);
+                    notFound = 1;
+                    
+                    con.close();
+                }if (notFound == 0){
+                    JOptionPane.showMessageDialog(new JFrame(), "invalid ID", "Dialog", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Error" + e.getMessage());
+        }
+    }//GEN-LAST:event_searchButton_PaymentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -414,10 +466,10 @@ public class gymPayment extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable paymentTable;
     private javax.swing.JLabel payment_logs;
     private javax.swing.JTextField search;
     private javax.swing.JButton searchButton_Payment;
+    private javax.swing.JTable searchpaymentTable;
     // End of variables declaration//GEN-END:variables
 }
