@@ -19,6 +19,7 @@ public class gymsystem extends javax.swing.JFrame {
    ImageIcon logo = new ImageIcon( "Gym.png");
     public gymsystem() {
         initComponents();
+        setTitle("Admin");
     }
 
     /**

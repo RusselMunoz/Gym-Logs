@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -7,11 +6,9 @@ import java.sql.Statement;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
-import javax.swing.table.DefaultTableModel;
 
 public class updateMember extends javax.swing.JFrame {
 
@@ -20,6 +17,7 @@ public class updateMember extends javax.swing.JFrame {
      */
     public updateMember() {
         initComponents();
+        setTitle("Update Member");
     }
 
     public void loadData(){
@@ -383,7 +381,6 @@ public class updateMember extends javax.swing.JFrame {
         gymPayment x = new gymPayment();
                 x.setVisible(true);
                 x.loadData();
-                x.loadData();
                 x.setLocationRelativeTo(null);
     }//GEN-LAST:event_PaymentActionPerformed
 
@@ -427,7 +424,7 @@ public class updateMember extends javax.swing.JFrame {
                 ResultSet rs = st.executeQuery(sql);
                 
                 LocalDateTime now = LocalDateTime.now();
-                    String formattedDateTime = now.format(formatter);
+                String formattedDateTime = now.format(formatter);
                     
                 while(rs.next()){
                     notFound = 1;
@@ -465,10 +462,10 @@ public class updateMember extends javax.swing.JFrame {
                 }
                     
                     loadData();
-                    con.close();
                 }if(notFound == 0){
                     JOptionPane.showMessageDialog(new JFrame(), "invalid ID", "Dialog", JOptionPane.ERROR_MESSAGE);   
                 }
+                con.close();
             }
         }catch(Exception e){
             System.out.println("Error " + e.getMessage());
@@ -576,10 +573,11 @@ public class updateMember extends javax.swing.JFrame {
                     planComboBox.setSelectedItem(rs.getString("plan"));
                     notFound = 1;
                     
-                    con.close();
+                    
                 }if (notFound == 0){
                     JOptionPane.showMessageDialog(new JFrame(), "invalid ID", "Dialog", JOptionPane.ERROR_MESSAGE);
                 }
+                con.close();
             }
         }catch(Exception e){
             System.out.println("Error" + e.getMessage());

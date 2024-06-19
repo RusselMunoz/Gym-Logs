@@ -7,19 +7,19 @@ import java.sql.Statement;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
-import javax.swing.table.DefaultTableModel;
 
 public class NewMember extends javax.swing.JFrame {
-
+    //ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("Gym.png")); //---if turn into jar file.setIconImage(logo.getImage()); 
     /**
      * Creates new form NewMember
      */
     public NewMember() {
         initComponents();
+        //setIconImage(logo.getImage());
+        setTitle("New Member");
     }
     
     public void loadData(){

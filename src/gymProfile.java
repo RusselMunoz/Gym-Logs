@@ -1,12 +1,7 @@
-import java.awt.Color;
-import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -23,6 +18,7 @@ public class gymProfile extends javax.swing.JFrame {
      */
     public gymProfile() {
         initComponents();
+        setTitle("Member's Profile");
     }
 
 public void loadData(){
@@ -111,6 +107,11 @@ public void loadData(){
         Profile.setText("Profiles");
         Profile.setBorder(null);
         Profile.setContentAreaFilled(false);
+        Profile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProfileActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new Color(96, 81, 41));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,7 +151,6 @@ public void loadData(){
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Members Profile");
 
-        jScrollPane1.setBackground(new Color(210, 97, 69));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -369,12 +369,16 @@ public void loadData(){
     }//GEN-LAST:event_profileTablePropertyChange
 
     private void jScrollPane1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jScrollPane1PropertyChange
-    jScrollPane1.getViewport().setBackground(new Color(210, 97, 69));
+
     }//GEN-LAST:event_jScrollPane1PropertyChange
 
     private void searchButton_MemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton_MemberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchButton_MemberActionPerformed
+
+    private void ProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProfileActionPerformed
 
     /**
      * @param args the command line arguments

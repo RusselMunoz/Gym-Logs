@@ -1,28 +1,56 @@
 import java.awt.Color;
-import java.awt.event.KeyEvent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.ImageIcon;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.table.DefaultTableModel;
 
 public class gymLogIn extends javax.swing.JFrame {
-    private gymLogs logsForm;
-
+    private final gymLogs logsFormInstance;
+    
     ImageIcon logo = new ImageIcon( "Gym.png");
-    public gymLogIn(gymLogs logsForm) {
-        this.logsForm = logsForm;
+    //ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("Gym.png")); //---if turn into jar file.setIconImage(logo.getImage()); 
+    
+    public gymLogIn(gymLogs logsFormInstance) {
+        this.logsFormInstance = logsFormInstance;
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setTitle("Gym Log In");
+        //setIconImage(logo.getImage());
     }
     
-    public gymLogIn() {
-        initComponents();
+    public void loadData(){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            String url = "jdbc:mysql://localhost:3306/gym";
+            String user = "root";
+            String pass = "";
+        
+            Connection con = DriverManager.getConnection(url, user, pass);
+            Statement st = con.createStatement();
+            
+            String sql = "SELECT * FROM member";
+            ResultSet rs = st.executeQuery(sql);
+            
+            String i, n, d, t;
+            
+            while(rs.next()){
+                i = rs.getString("id");
+                n = rs.getString("name");
+                d = rs.getString("date");
+                t = rs.getString("time_in");
+            }
+        }catch(Exception e){
+        System.out.println("Error " + e.getMessage());
+        }
     }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -166,6 +194,7 @@ public class gymLogIn extends javax.swing.JFrame {
             String url = "jdbc:MySQL://localhost:3306/gym";
             String user = "root";
             String pass = "";
+            
             Connection con = DriverManager.getConnection(url, user, pass);
             Statement st = con.createStatement();
 
@@ -177,8 +206,9 @@ public class gymLogIn extends javax.swing.JFrame {
                 ResultSet rs = st.executeQuery(sql);
                 if (rs.next()) {
                     String memberName = rs.getString("name");
+                    
                     // Add log entry to the JTable in gymLogs class
-                    logsForm.addLogEntry(ID, memberName);
+                    logsFormInstance.addLogEntry(ID, memberName);
                 } else {
                     JOptionPane.showMessageDialog(new JFrame(), "Member ID not found", "Dialog", JOptionPane.ERROR_MESSAGE);
                 }
@@ -223,14 +253,10 @@ public class gymLogIn extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                gymLogs logsForm = new gymLogs();
-                logsForm.setVisible(true);
-                logsForm.loadData();
-                logsForm.setLocationRelativeTo(null);
-
-                gymLogIn loginForm = new gymLogIn(logsForm);
-                loginForm.setVisible(true);
-                loginForm.setLocationRelativeTo(null);
+                gymLogs logsFormInstance = new gymLogs();
+                gymLogIn x = new gymLogIn(logsFormInstance);
+                x.setVisible(true);
+                x.setLocationRelativeTo(null);
             }
         });
     }

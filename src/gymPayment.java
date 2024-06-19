@@ -1,11 +1,9 @@
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -21,6 +19,7 @@ public class gymPayment extends javax.swing.JFrame {
      */
     public gymPayment() {
         initComponents();
+        setTitle("Payment");
     }
 
     public void loadData(){
@@ -339,9 +338,9 @@ public class gymPayment extends javax.swing.JFrame {
     private void LogsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogsActionPerformed
         dispose();
         gymLogs x = new gymLogs();
-                x.setVisible(true);
-                x.loadData();
-                x.setLocationRelativeTo(null);
+        x.setVisible(true);
+        x.loadData();
+        x.setLocationRelativeTo(null);
     }//GEN-LAST:event_LogsActionPerformed
 
     private void paymentTablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_paymentTablePropertyChange
@@ -368,7 +367,7 @@ public class gymPayment extends javax.swing.JFrame {
     }//GEN-LAST:event_paymentTablePropertyChange
 
     private void jScrollPane1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jScrollPane1PropertyChange
-    jScrollPane1.getViewport().setBackground(new Color(210, 97, 69));
+
     }//GEN-LAST:event_jScrollPane1PropertyChange
 
     private void searchButton_PaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton_PaymentActionPerformed
