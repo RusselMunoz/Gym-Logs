@@ -63,6 +63,8 @@ public class gymLogs extends javax.swing.JFrame {
         // Add a new row to the JTable
         DefaultTableModel model = (DefaultTableModel) logsForm.getModel();
         model.addRow(new Object[]{memberID, memberName, date, timeIn});
+        
+        
     }
     
     @SuppressWarnings("unchecked")

@@ -7,6 +7,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
 
 public class gymLogIn extends javax.swing.JFrame {
@@ -45,11 +48,11 @@ public class gymLogIn extends javax.swing.JFrame {
                 d = rs.getString("date");
                 t = rs.getString("time_in");
             }
+            
         }catch(Exception e){
         System.out.println("Error " + e.getMessage());
         }
     }
-    
     
 
     @SuppressWarnings("unchecked")
@@ -188,7 +191,7 @@ public class gymLogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_SearchKeyPressed
 
     private void loginMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginMemberActionPerformed
-        String ID;
+        String ID, query2;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:MySQL://localhost:3306/gym";
@@ -205,14 +208,24 @@ public class gymLogIn extends javax.swing.JFrame {
                 String sql = "SELECT * FROM member WHERE id = '" + ID + "'";
                 ResultSet rs = st.executeQuery(sql);
                 if (rs.next()) {
+                    String memberID = rs.getString("id");
                     String memberName = rs.getString("name");
                     
-                    // Add log entry to the JTable in gymLogs class
-                    logsFormInstance.addLogEntry(ID, memberName);
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
+                    String time_in = LocalTime.now().format(formatter);
+                    String date = LocalDate.now().toString();
+                    
+                    logsFormInstance.addLogEntry(memberID, memberName);
+                    
+                    query2 = "INSERT INTO time (date, time_in)" + "VALUES ('"+date+"', '"+time_in+"')";
+                    st.executeUpdate(query2);
+                    
+                    showMessageDialog(null, "Successfully registered");
                 } else {
                     JOptionPane.showMessageDialog(new JFrame(), "Member ID not found", "Dialog", JOptionPane.ERROR_MESSAGE);
                 }
             }
+            loadData();
         } catch (Exception e) {
             System.out.println("Error " + e.getMessage());
         }
@@ -257,6 +270,7 @@ public class gymLogIn extends javax.swing.JFrame {
                 gymLogIn x = new gymLogIn(logsFormInstance);
                 x.setVisible(true);
                 x.setLocationRelativeTo(null);
+                x.loadData();
             }
         });
     }

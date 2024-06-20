@@ -205,6 +205,12 @@ public class NewMember extends javax.swing.JFrame {
         mobilenumber_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mobilenumber_Text.setText("Mobile Number");
 
+        mobile_numberLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mobile_numberLabelActionPerformed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Age");
 
@@ -493,6 +499,10 @@ public class NewMember extends javax.swing.JFrame {
     private void name_LabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_LabelActionPerformed
         
     }//GEN-LAST:event_name_LabelActionPerformed
+
+    private void mobile_numberLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobile_numberLabelActionPerformed
+        //if (mobile_numberLabel)
+    }//GEN-LAST:event_mobile_numberLabelActionPerformed
 
     /**
      * @param args the command line arguments

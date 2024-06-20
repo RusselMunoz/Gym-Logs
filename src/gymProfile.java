@@ -73,7 +73,7 @@ public void loadData(){
         profileTable = new javax.swing.JTable();
         search = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        searchMember = new javax.swing.JTable();
         searchButton_Member = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -191,7 +191,7 @@ public void loadData(){
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        searchMember.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -202,8 +202,8 @@ public void loadData(){
 
             }
         ));
-        jTable1.setShowGrid(true);
-        jScrollPane2.setViewportView(jTable1);
+        searchMember.setShowGrid(true);
+        jScrollPane2.setViewportView(searchMember);
 
         searchButton_Member.setText("Search");
         searchButton_Member.addActionListener(new java.awt.event.ActionListener() {
@@ -373,7 +373,50 @@ public void loadData(){
     }//GEN-LAST:event_jScrollPane1PropertyChange
 
     private void searchButton_MemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton_MemberActionPerformed
-        // TODO add your handling code here:
+        String ID;
+        int notFound = 0;
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            String url = "jdbc:mysql://localhost:3306/gym";
+            String user = "root";
+            String pass = "";
+            
+            Connection con = DriverManager.getConnection(url, user, pass);
+            Statement st = con.createStatement();
+            
+            ID = search.getText();
+            if("".equals(ID)){
+                JOptionPane.showMessageDialog(new JFrame(), "ID is required", "Dialog", JOptionPane.ERROR_MESSAGE);
+            }else{
+                String sql = "SELECT * FROM member WHERE id=" + ID;
+                ResultSet rs = st.executeQuery(sql);
+                    
+                DefaultTableModel model = (DefaultTableModel) searchMember.getModel();
+                searchMember.setModel(model);
+                
+                String name,mobile_number,age,sex,ecn,ecnum,plan;
+                
+                while (rs.next()) {
+                    name = (rs.getString("name"));
+                    mobile_number = (rs.getString("mobile_number"));
+                    age = (rs.getString("age"));
+                    sex =(rs.getString("sex"));
+                    ecn = (rs.getString("emergency_contact_name"));
+                    ecnum = (rs.getString("emergency_contact_number"));
+                    plan = (rs.getString("plan"));
+                    
+                    model.addRow(new Object[]{name, mobile_number,age, sex,ecn,ecnum,plan});
+                    notFound = 1;
+                    
+                    
+                }if (notFound == 0){
+                    JOptionPane.showMessageDialog(new JFrame(), "invalid ID", "Dialog", JOptionPane.ERROR_MESSAGE);
+                }con.close();
+            }
+        }catch(Exception e){
+            System.out.println("Error" + e.getMessage());
+        }
     }//GEN-LAST:event_searchButton_MemberActionPerformed
 
     private void ProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileActionPerformed
@@ -433,9 +476,9 @@ public void loadData(){
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable profileTable;
     private javax.swing.JTextField search;
     private javax.swing.JButton searchButton_Member;
+    private javax.swing.JTable searchMember;
     // End of variables declaration//GEN-END:variables
 }
