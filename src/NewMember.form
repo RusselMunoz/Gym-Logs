@@ -209,13 +209,13 @@
                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="name_Text" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                      <Component id="mobilenumber_Text" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                       <Component id="name_Label" min="-2" pref="400" max="-2" attributes="0"/>
                       <Component id="mobile_numberLabel" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                       <Component id="ageLabel" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                       <Component id="sex_Text" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                       <Component id="sexComboBox" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                      <Component id="mobilenumber_Text" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="160" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -305,7 +305,10 @@
         </Component>
         <Component class="javax.swing.JTextField" name="name_Label">
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="name_LabelMouseClicked"/>
+            <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="name_LabelComponentShown"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="name_LabelActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="name_LabelKeyReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="mobilenumber_Text">
@@ -319,6 +322,7 @@
         <Component class="javax.swing.JTextField" name="mobile_numberLabel">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mobile_numberLabelActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="mobile_numberLabelKeyReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">

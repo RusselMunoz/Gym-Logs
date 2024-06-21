@@ -196,9 +196,24 @@ public class NewMember extends javax.swing.JFrame {
         name_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         name_Text.setText("Name");
 
+        name_Label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                name_LabelMouseClicked(evt);
+            }
+        });
+        name_Label.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                name_LabelComponentShown(evt);
+            }
+        });
         name_Label.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 name_LabelActionPerformed(evt);
+            }
+        });
+        name_Label.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                name_LabelKeyReleased(evt);
             }
         });
 
@@ -208,6 +223,11 @@ public class NewMember extends javax.swing.JFrame {
         mobile_numberLabel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mobile_numberLabelActionPerformed(evt);
+            }
+        });
+        mobile_numberLabel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                mobile_numberLabelKeyReleased(evt);
             }
         });
 
@@ -266,13 +286,13 @@ public class NewMember extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(name_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mobilenumber_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(name_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mobile_numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sex_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sexComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sexComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mobilenumber_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(contactname_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -397,7 +417,12 @@ public class NewMember extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection(url, user, pass);
             Statement st = con.createStatement();
             
-            if("".equals(name_Label.getText())){
+            if (containsInteger(name_Label.getText())){
+                    JOptionPane.showMessageDialog(new JFrame(), "Invalid Name", "Dialog", JOptionPane.ERROR_MESSAGE);
+            }else if(containsString(mobile_numberLabel.getText())){
+                    JOptionPane.showMessageDialog(new JFrame(), "Invalid Mobile Number", "Dialog", JOptionPane.ERROR_MESSAGE);
+            }else{
+                if("".equals(name_Label.getText())){
                 JOptionPane.showMessageDialog(new JFrame(), "Name is required", "Dialog", JOptionPane.ERROR_MESSAGE);
             }else if("".equals(mobile_numberLabel.getText())){
                 JOptionPane.showMessageDialog(new JFrame(), "Mobile Number is required", "Dialog", JOptionPane.ERROR_MESSAGE);
@@ -471,6 +496,7 @@ public class NewMember extends javax.swing.JFrame {
                 loadData();
                 con.close();
             }
+            }
         }catch(Exception e){
             System.out.println("Error " + e.getMessage());
         }
@@ -497,12 +523,56 @@ public class NewMember extends javax.swing.JFrame {
     }//GEN-LAST:event_LogsActionPerformed
 
     private void name_LabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_LabelActionPerformed
-        
-    }//GEN-LAST:event_name_LabelActionPerformed
 
+    }//GEN-LAST:event_name_LabelActionPerformed
+    private static boolean containsInteger(String text){
+        try{
+            Integer.parseInt(text);
+            return true;
+    } catch (NumberFormatException e){
+        return false;
+    }
+    }
+    
+    private static boolean containsString(String text){
+        try{
+            String.valueOf(text);
+            return true;
+    } catch (NumberFormatException e){
+        return false;
+    }
+    }
+    
+        
     private void mobile_numberLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobile_numberLabelActionPerformed
         //if (mobile_numberLabel)
     }//GEN-LAST:event_mobile_numberLabelActionPerformed
+
+    private void name_LabelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_name_LabelComponentShown
+       
+    }//GEN-LAST:event_name_LabelComponentShown
+
+    private void name_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_name_LabelMouseClicked
+
+    }//GEN-LAST:event_name_LabelMouseClicked
+
+    private void name_LabelKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_name_LabelKeyReleased
+        if (containsInteger(name_Label.getText())){
+           name_Label.setForeground(Color.RED);
+        }
+        else{
+            name_Label.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_name_LabelKeyReleased
+
+    private void mobile_numberLabelKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mobile_numberLabelKeyReleased
+        if (containsString(mobile_numberLabel.getText())){
+           mobile_numberLabel.setForeground(Color.RED);
+        }
+        else{
+            mobile_numberLabel.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_mobile_numberLabelKeyReleased
 
     /**
      * @param args the command line arguments
