@@ -74,15 +74,15 @@ public class NewMember extends javax.swing.JFrame {
         name_Text = new javax.swing.JLabel();
         name_Label = new javax.swing.JTextField();
         mobilenumber_Text = new javax.swing.JLabel();
-        mobile_numberLabel = new javax.swing.JTextField();
+        mobileNumberField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         ageLabel = new javax.swing.JTextField();
         sex_Text = new javax.swing.JLabel();
         emergencycontactName_Text = new javax.swing.JLabel();
-        contactname_Label = new javax.swing.JTextField();
+        contactNameLabel = new javax.swing.JTextField();
         sexComboBox = new javax.swing.JComboBox<>();
         emergencycontactNumber_Text = new javax.swing.JLabel();
-        contactnumber_Label = new javax.swing.JTextField();
+        contactNumberLabel = new javax.swing.JTextField();
         plan_Text = new javax.swing.JLabel();
         planComboBox = new javax.swing.JComboBox<>();
         addMember = new javax.swing.JButton();
@@ -220,19 +220,25 @@ public class NewMember extends javax.swing.JFrame {
         mobilenumber_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mobilenumber_Text.setText("Mobile Number");
 
-        mobile_numberLabel.addActionListener(new java.awt.event.ActionListener() {
+        mobileNumberField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mobile_numberLabelActionPerformed(evt);
+                mobileNumberFieldActionPerformed(evt);
             }
         });
-        mobile_numberLabel.addKeyListener(new java.awt.event.KeyAdapter() {
+        mobileNumberField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                mobile_numberLabelKeyReleased(evt);
+                mobileNumberFieldKeyReleased(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Age");
+
+        ageLabel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ageLabelKeyTyped(evt);
+            }
+        });
 
         sex_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         sex_Text.setText("Sex");
@@ -249,6 +255,12 @@ public class NewMember extends javax.swing.JFrame {
 
         emergencycontactNumber_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         emergencycontactNumber_Text.setText("Emergency Contact Number");
+
+        contactNumberLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contactNumberLabelActionPerformed(evt);
+            }
+        });
 
         plan_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         plan_Text.setText("Plan");
@@ -287,7 +299,7 @@ public class NewMember extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(name_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(name_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mobile_numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mobileNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sex_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,10 +307,10 @@ public class NewMember extends javax.swing.JFrame {
                     .addComponent(mobilenumber_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contactname_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emergencycontactName_Text)
                     .addComponent(emergencycontactNumber_Text)
-                    .addComponent(contactnumber_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(plan_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(planComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -320,15 +332,15 @@ public class NewMember extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(name_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contactname_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(contactNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mobilenumber_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emergencycontactNumber_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mobile_numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contactnumber_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mobileNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -396,10 +408,10 @@ public class NewMember extends javax.swing.JFrame {
 
     private void clearAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearAllActionPerformed
         name_Label.setText("");
-        mobile_numberLabel.setText("");
+        mobileNumberField.setText("");
         ageLabel.setText("");
-        contactname_Label.setText("");
-        contactnumber_Label.setText("");
+        contactNameLabel.setText("");
+        contactNumberLabel.setText("");
         sexComboBox.setSelectedItem(" ");
         planComboBox.setSelectedItem(" ");
     }//GEN-LAST:event_clearAllActionPerformed
@@ -419,20 +431,27 @@ public class NewMember extends javax.swing.JFrame {
             
             if (containsInteger(name_Label.getText())){
                     JOptionPane.showMessageDialog(new JFrame(), "Invalid Name", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }else if(containsString(mobile_numberLabel.getText())){
+            }else if(containsIntegerWith11Digits(mobileNumberField.getText())){
                     JOptionPane.showMessageDialog(new JFrame(), "Invalid Mobile Number", "Dialog", JOptionPane.ERROR_MESSAGE);
+            }else if(containsString(ageLabel.getText())){
+                    JOptionPane.showMessageDialog(new JFrame(), "Invalid Age", "Dialog", JOptionPane.ERROR_MESSAGE);
+            }else if(containsInteger(contactNameLabel.getText())){
+                    JOptionPane.showMessageDialog(new JFrame(), "Invalid Contact Name", "Dialog", JOptionPane.ERROR_MESSAGE); 
+            }else if(containsIntegerWith11Digits(contactNumberLabel.getText())){
+                    JOptionPane.showMessageDialog(new JFrame(), "Invalid Contact Number", "Dialog", JOptionPane.ERROR_MESSAGE); 
+                    
             }else{
                 if("".equals(name_Label.getText())){
                 JOptionPane.showMessageDialog(new JFrame(), "Name is required", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }else if("".equals(mobile_numberLabel.getText())){
+            }else if("".equals(mobileNumberField.getText())){
                 JOptionPane.showMessageDialog(new JFrame(), "Mobile Number is required", "Dialog", JOptionPane.ERROR_MESSAGE);
             }else if("".equals(ageLabel.getText())){
                 JOptionPane.showMessageDialog(new JFrame(), "Age is required", "Dialog", JOptionPane.ERROR_MESSAGE);
             }else if(" ".equals(sexComboBox.getSelectedItem())){
                 JOptionPane.showMessageDialog(new JFrame(), "Select the following choices below", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }else if("".equals(contactname_Label.getText())){
+            }else if("".equals(contactNameLabel.getText())){
                 JOptionPane.showMessageDialog(new JFrame(), "Name is required", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }else if("".equals(contactnumber_Label.getText())){
+            }else if("".equals(contactNumberLabel.getText())){
                 JOptionPane.showMessageDialog(new JFrame(), "Number is required", "Dialog", JOptionPane.ERROR_MESSAGE);
             }else if(" ".equals(planComboBox.getSelectedItem())){
                 JOptionPane.showMessageDialog(new JFrame(), "Select the following choices below", "Dialog", JOptionPane.ERROR_MESSAGE);
@@ -447,11 +466,11 @@ public class NewMember extends javax.swing.JFrame {
                 String formattedExpirationDateTime2 = expirationDateTime2.format(formatter);
                 
                 nE = name_Label.getText();
-                mR = mobile_numberLabel.getText();
+                mR = mobileNumberField.getText();
                 aE = ageLabel.getText();
                 sX = (String) sexComboBox.getSelectedItem();
-                eE = contactname_Label.getText();
-                eR = contactnumber_Label.getText();
+                eE = contactNameLabel.getText();
+                eR = contactNumberLabel.getText();
                 pN = (String) planComboBox.getSelectedItem();
                 
                 query = "INSERT INTO member (name, mobile_number, age, sex, emergency_contact_name, emergency_contact_number, plan) " + "VALUES ('"+nE+"', '"+mR+"', '"+aE+"', '"+sX+"', '"+eE+"', '"+eR+"', '"+pN+"')";
@@ -484,10 +503,10 @@ public class NewMember extends javax.swing.JFrame {
                 }
                 
                 name_Label.setText("");
-                mobile_numberLabel.setText("");
+                mobileNumberField.setText("");
                 ageLabel.setText("");
-                contactname_Label.setText("");
-                contactnumber_Label.setText("");
+                contactNameLabel.setText("");
+                contactNumberLabel.setText("");
                 sexComboBox.setSelectedItem(" ");
                 planComboBox.setSelectedItem(" ");
                 
@@ -501,7 +520,34 @@ public class NewMember extends javax.swing.JFrame {
             System.out.println("Error " + e.getMessage());
         }
     }//GEN-LAST:event_addMemberActionPerformed
-
+    
+    private static boolean containsString(String text) {
+        try {
+            Integer.parseInt(text);
+            return false; // No exception means it's a valid integer
+        } catch (NumberFormatException e) {
+            return true; // Exception means it contains non-integer characters
+        }
+    }
+    
+    private static boolean containsIntegerWith11Digits(String text) {
+    // Check if text consists entirely of digits
+        if (text.matches("\\d+")) {
+            // Check if the length of text is exactly 11 digits
+            return text.length() != 11; // Return true if not exactly 11 digits
+        }
+        return true; // Return true if text is not all digits
+    }
+    
+    private static boolean containsInteger(String text){
+        try{
+            Integer.parseInt(text);
+            return true;
+        } catch (NumberFormatException e){
+            return false;
+        }
+    }
+    
     private void ProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileActionPerformed
         dispose();
         gymProfile x = new gymProfile();
@@ -525,28 +571,10 @@ public class NewMember extends javax.swing.JFrame {
     private void name_LabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_LabelActionPerformed
 
     }//GEN-LAST:event_name_LabelActionPerformed
-    private static boolean containsInteger(String text){
-        try{
-            Integer.parseInt(text);
-            return true;
-    } catch (NumberFormatException e){
-        return false;
-    }
-    }
-    
-    private static boolean containsString(String text){
-        try{
-            String.valueOf(text);
-            return true;
-    } catch (NumberFormatException e){
-        return false;
-    }
-    }
-    
         
-    private void mobile_numberLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobile_numberLabelActionPerformed
-        //if (mobile_numberLabel)
-    }//GEN-LAST:event_mobile_numberLabelActionPerformed
+    private void mobileNumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobileNumberFieldActionPerformed
+
+    }//GEN-LAST:event_mobileNumberFieldActionPerformed
 
     private void name_LabelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_name_LabelComponentShown
        
@@ -565,14 +593,25 @@ public class NewMember extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_name_LabelKeyReleased
 
-    private void mobile_numberLabelKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mobile_numberLabelKeyReleased
-        if (containsString(mobile_numberLabel.getText())){
-           mobile_numberLabel.setForeground(Color.RED);
-        }
-        else{
-            mobile_numberLabel.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_mobile_numberLabelKeyReleased
+    private void mobileNumberFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mobileNumberFieldKeyReleased
+        if (containsIntegerWith11Digits(mobileNumberField.getText())) {
+                    mobileNumberField.setForeground(Color.RED); // Invalid input
+                } else {
+                    mobileNumberField.setForeground(Color.BLACK); // Valid input
+                }
+    }//GEN-LAST:event_mobileNumberFieldKeyReleased
+
+    private void ageLabelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ageLabelKeyTyped
+        if (containsString(ageLabel.getText())) {
+                    ageLabel.setForeground(Color.RED); // Invalid input
+                } else {
+                    ageLabel.setForeground(Color.BLACK); // Valid input
+                }
+    }//GEN-LAST:event_ageLabelKeyTyped
+
+    private void contactNumberLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactNumberLabelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contactNumberLabelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -621,15 +660,15 @@ public class NewMember extends javax.swing.JFrame {
     private javax.swing.JButton addMember;
     private javax.swing.JTextField ageLabel;
     private javax.swing.JButton clearAll;
-    private javax.swing.JTextField contactname_Label;
-    private javax.swing.JTextField contactnumber_Label;
+    private javax.swing.JTextField contactNameLabel;
+    private javax.swing.JTextField contactNumberLabel;
     private javax.swing.JLabel emergencycontactName_Text;
     private javax.swing.JLabel emergencycontactNumber_Text;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField mobile_numberLabel;
+    private javax.swing.JTextField mobileNumberField;
     private javax.swing.JLabel mobilenumber_Text;
     private javax.swing.JTextField name_Label;
     private javax.swing.JLabel name_Text;

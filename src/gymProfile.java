@@ -8,7 +8,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import javax.swing.*;
+import javax.swing.table.TableRowSorter;
 
 
 public class gymProfile extends javax.swing.JFrame {
@@ -72,9 +74,6 @@ public void loadData(){
         jScrollPane1 = new javax.swing.JScrollPane();
         profileTable = new javax.swing.JTable();
         search = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        searchMember = new javax.swing.JTable();
-        searchButton_Member = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -187,28 +186,11 @@ public void loadData(){
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 searchKeyPressed(evt);
             }
-        });
-
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        searchMember.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchKeyReleased(evt);
             }
-        ));
-        searchMember.setShowGrid(true);
-        jScrollPane2.setViewportView(searchMember);
-
-        searchButton_Member.setText("Search");
-        searchButton_Member.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButton_MemberActionPerformed(evt);
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                searchKeyTyped(evt);
             }
         });
 
@@ -218,19 +200,13 @@ public void loadData(){
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(385, 385, 385)
-                        .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchButton_Member))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1005, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1005, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1052, 1052, 1052)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(search))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1005, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,14 +214,10 @@ public void loadData(){
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(searchButton_Member)))
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
@@ -269,7 +241,7 @@ public void loadData(){
                         .addComponent(Logs, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(HeaderLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1067, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         HeaderLayout.setVerticalGroup(
@@ -372,56 +344,22 @@ public void loadData(){
 
     }//GEN-LAST:event_jScrollPane1PropertyChange
 
-    private void searchButton_MemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton_MemberActionPerformed
-        String ID;
-        int notFound = 0;
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            String url = "jdbc:mysql://localhost:3306/gym";
-            String user = "root";
-            String pass = "";
-            
-            Connection con = DriverManager.getConnection(url, user, pass);
-            Statement st = con.createStatement();
-            
-            ID = search.getText();
-            if("".equals(ID)){
-                JOptionPane.showMessageDialog(new JFrame(), "ID is required", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }else{
-                String sql = "SELECT * FROM member WHERE id=" + ID;
-                ResultSet rs = st.executeQuery(sql);
-                    
-                DefaultTableModel model = (DefaultTableModel) searchMember.getModel();
-                searchMember.setModel(model);
-                
-                String name,mobile_number,age,sex,ecn,ecnum,plan;
-                
-                while (rs.next()) {
-                    name = (rs.getString("name"));
-                    mobile_number = (rs.getString("mobile_number"));
-                    age = (rs.getString("age"));
-                    sex =(rs.getString("sex"));
-                    ecn = (rs.getString("emergency_contact_name"));
-                    ecnum = (rs.getString("emergency_contact_number"));
-                    plan = (rs.getString("plan"));
-                    
-                    model.addRow(new Object[]{name, mobile_number,age, sex,ecn,ecnum,plan});
-                    notFound = 1;
-                    
-                    
-                }if (notFound == 0){
-                    JOptionPane.showMessageDialog(new JFrame(), "invalid ID", "Dialog", JOptionPane.ERROR_MESSAGE);
-                }con.close();
-            }
-        }catch(Exception e){
-            System.out.println("Error" + e.getMessage());
-        }
-    }//GEN-LAST:event_searchButton_MemberActionPerformed
-
     private void ProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ProfileActionPerformed
+
+    private void searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchKeyReleased
+      if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        DefaultTableModel model = (DefaultTableModel) profileTable.getModel();
+        TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(model);
+        profileTable.setRowSorter(obj);
+        obj.setRowFilter(RowFilter.regexFilter(search.getText()));
+      }
+    }//GEN-LAST:event_searchKeyReleased
+
+    private void searchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchKeyTyped
 
     /**
      * @param args the command line arguments
@@ -475,10 +413,7 @@ public void loadData(){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable profileTable;
     private javax.swing.JTextField search;
-    private javax.swing.JButton searchButton_Member;
-    private javax.swing.JTable searchMember;
     // End of variables declaration//GEN-END:variables
 }

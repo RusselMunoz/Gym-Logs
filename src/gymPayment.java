@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -7,10 +8,12 @@ import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.RowFilter;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableRowSorter;
 
 public class gymPayment extends javax.swing.JFrame {
 
@@ -72,9 +75,6 @@ public class gymPayment extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         paymentTable = new javax.swing.JTable();
         search = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        searchpaymentTable = new javax.swing.JTable();
-        searchButton_Payment = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -225,29 +225,8 @@ public class gymPayment extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 searchKeyPressed(evt);
             }
-        });
-
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        searchpaymentTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        searchpaymentTable.setShowGrid(true);
-        searchpaymentTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(searchpaymentTable);
-
-        searchButton_Payment.setText("Search");
-        searchButton_Payment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButton_PaymentActionPerformed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchKeyReleased(evt);
             }
         });
 
@@ -261,11 +240,8 @@ public class gymPayment extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(payment_logs)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchButton_Payment))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                        .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -274,13 +250,10 @@ public class gymPayment extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(payment_logs, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton_Payment)
                     .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -370,51 +343,14 @@ public class gymPayment extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jScrollPane1PropertyChange
 
-    private void searchButton_PaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton_PaymentActionPerformed
-        String ID;
-        int notFound = 0;
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            String url = "jdbc:mysql://localhost:3306/gym";
-            String user = "root";
-            String pass = "";
-            
-            Connection con = DriverManager.getConnection(url, user, pass);
-            Statement st = con.createStatement();
-            
-            ID = search.getText();
-            if("".equals(ID)){
-                JOptionPane.showMessageDialog(new JFrame(), "ID is required", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }else{
-                String sql = "SELECT * FROM member WHERE id=" + ID;
-                ResultSet rs = st.executeQuery(sql);
-
-                DefaultTableModel model = (DefaultTableModel) searchpaymentTable.getModel();
-                model.setRowCount(0);
-                
-                if (rs.next()) {
-                    Object[] row = new Object[7];
-                    row[0] = rs.getString("name");
-                    row[1] = rs.getString("mobile_number");
-                    row[2] = rs.getString("age");
-                    row[3] = rs.getString("sex");
-                    row[4] = rs.getString("emergency_contact_name");
-                    row[5] = rs.getString("emergency_contact_number");
-                    row[6] = rs.getString("plan");
-                    
-                    model.addRow(row);
-                    notFound = 1;
-                    
-                    con.close();
-                }if (notFound == 0){
-                    JOptionPane.showMessageDialog(new JFrame(), "invalid ID", "Dialog", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        }catch(Exception e){
-            System.out.println("Error" + e.getMessage());
-        }
-    }//GEN-LAST:event_searchButton_PaymentActionPerformed
+    private void searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchKeyReleased
+    if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        DefaultTableModel model = (DefaultTableModel) paymentTable.getModel();
+        TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(model);
+        paymentTable.setRowSorter(obj);
+        obj.setRowFilter(RowFilter.regexFilter(search.getText()));
+      }
+    }//GEN-LAST:event_searchKeyReleased
 
     /**
      * @param args the command line arguments
@@ -464,11 +400,8 @@ public class gymPayment extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable paymentTable;
     private javax.swing.JLabel payment_logs;
     private javax.swing.JTextField search;
-    private javax.swing.JButton searchButton_Payment;
-    private javax.swing.JTable searchpaymentTable;
     // End of variables declaration//GEN-END:variables
 }

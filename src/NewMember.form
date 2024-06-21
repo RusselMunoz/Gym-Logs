@@ -210,7 +210,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="name_Text" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                       <Component id="name_Label" min="-2" pref="400" max="-2" attributes="0"/>
-                      <Component id="mobile_numberLabel" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                      <Component id="mobileNumberField" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                       <Component id="ageLabel" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                       <Component id="sex_Text" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
@@ -219,10 +219,10 @@
                   </Group>
                   <EmptySpace pref="160" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="contactname_Label" min="-2" pref="400" max="-2" attributes="0"/>
+                      <Component id="contactNameLabel" min="-2" pref="400" max="-2" attributes="0"/>
                       <Component id="emergencycontactName_Text" min="-2" max="-2" attributes="0"/>
                       <Component id="emergencycontactNumber_Text" min="-2" max="-2" attributes="0"/>
-                      <Component id="contactnumber_Label" min="-2" pref="400" max="-2" attributes="0"/>
+                      <Component id="contactNumberLabel" min="-2" pref="400" max="-2" attributes="0"/>
                       <Component id="plan_Text" min="-2" pref="100" max="-2" attributes="0"/>
                       <Component id="planComboBox" min="-2" pref="400" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
@@ -249,7 +249,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="name_Label" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="contactname_Label" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="contactNameLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -258,8 +258,8 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="mobile_numberLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="contactnumber_Label" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="mobileNumberField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="contactNumberLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -319,10 +319,10 @@
             <Property name="text" type="java.lang.String" value="Mobile Number"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="mobile_numberLabel">
+        <Component class="javax.swing.JTextField" name="mobileNumberField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mobile_numberLabelActionPerformed"/>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="mobile_numberLabelKeyReleased"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mobileNumberFieldActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="mobileNumberFieldKeyReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -334,6 +334,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="ageLabel">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ageLabelKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="sex_Text">
           <Properties>
@@ -351,7 +354,7 @@
             <Property name="text" type="java.lang.String" value="Emergency Contact Name"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="contactname_Label">
+        <Component class="javax.swing.JTextField" name="contactNameLabel">
         </Component>
         <Component class="javax.swing.JComboBox" name="sexComboBox">
           <Properties>
@@ -378,7 +381,10 @@
             <Property name="text" type="java.lang.String" value="Emergency Contact Number"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="contactnumber_Label">
+        <Component class="javax.swing.JTextField" name="contactNumberLabel">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="contactNumberLabelActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="plan_Text">
           <Properties>

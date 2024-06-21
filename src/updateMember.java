@@ -68,15 +68,15 @@ public class updateMember extends javax.swing.JFrame {
         name_Text = new javax.swing.JLabel();
         name_Label = new javax.swing.JTextField();
         mobilenumber_Text = new javax.swing.JLabel();
-        mobile_numberLabel = new javax.swing.JTextField();
+        mobileNumberLabel = new javax.swing.JTextField();
         age_Text = new javax.swing.JLabel();
         ageLabel = new javax.swing.JTextField();
         sex_Text = new javax.swing.JLabel();
         emergencycontactName_Text = new javax.swing.JLabel();
-        contactname_Label = new javax.swing.JTextField();
+        contactNameLabel = new javax.swing.JTextField();
         sexComboBox = new javax.swing.JComboBox<>();
         emergencycontactNumber_Text = new javax.swing.JLabel();
-        contactnumber_Label = new javax.swing.JTextField();
+        contactNumberLabel = new javax.swing.JTextField();
         plan_Text = new javax.swing.JLabel();
         planComboBox = new javax.swing.JComboBox<>();
         updateButton = new javax.swing.JButton();
@@ -196,9 +196,9 @@ public class updateMember extends javax.swing.JFrame {
         mobilenumber_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mobilenumber_Text.setText("Mobile Number");
 
-        mobile_numberLabel.addActionListener(new java.awt.event.ActionListener() {
+        mobileNumberLabel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mobile_numberLabelActionPerformed(evt);
+                mobileNumberLabelActionPerformed(evt);
             }
         });
 
@@ -210,6 +210,12 @@ public class updateMember extends javax.swing.JFrame {
 
         emergencycontactName_Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         emergencycontactName_Text.setText("Emergency Contact Name");
+
+        contactNameLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contactNameLabelActionPerformed(evt);
+            }
+        });
 
         sexComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Male", "Female" }));
         sexComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -277,7 +283,7 @@ public class updateMember extends javax.swing.JFrame {
                     .addComponent(name_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mobilenumber_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(name_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mobile_numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mobileNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(age_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sex_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -289,10 +295,10 @@ public class updateMember extends javax.swing.JFrame {
                         .addComponent(search)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(member_searchButton))
-                    .addComponent(contactname_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emergencycontactName_Text)
                     .addComponent(emergencycontactNumber_Text)
-                    .addComponent(contactnumber_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(plan_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,15 +324,15 @@ public class updateMember extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(name_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contactname_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(contactNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mobilenumber_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emergencycontactNumber_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mobile_numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contactnumber_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mobileNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(age_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -428,42 +434,81 @@ public class updateMember extends javax.swing.JFrame {
                     
                 while(rs.next()){
                     notFound = 1;
-                    nE = name_Label.getText();
-                    mR = mobile_numberLabel.getText();
-                    aE = ageLabel.getText();
-                    sX = (String) sexComboBox.getSelectedItem();
-                    eE = contactname_Label.getText();
-                    eR = contactnumber_Label.getText();
-                    pN = (String) planComboBox.getSelectedItem();
-                    String sql2 = "UPDATE member SET name='"+nE+"', mobile_number='"+mR+"', age='"+aE+"', sex='"+sX+"', emergency_contact_name='"+eE+"', emergency_contact_number='"+eR+"', plan='"+pN+"' WHERE id=" + ID;
-                    st.executeUpdate(sql2);
-                    
-                    if("Daily".equals(pN)){
-                    aM = String.valueOf(70);
-                    dP = formattedDateTime;
-                    dE = formattedDateTime;
-                    
-                    query2 = "UPDATE payment SET amount='"+aM+"', date_paid='"+dP+"', date_expiration='"+dE+"' WHERE id=" + ID;
-                    st.executeUpdate(query2);
-                }else if("Half Month".equals(pN)){
-                    aM = String.valueOf(400);
-                    dP = formattedDateTime;
-                    dE = formattedExpirationDateTime2;
-                    
-                    query2 = "UPDATE payment SET amount='"+aM+"', date_paid='"+dP+"', date_expiration='"+dE+"' WHERE id=" + ID;
-                    st.executeUpdate(query2);
-                }else if("Monthly".equals(pN)){
-                    aM = String.valueOf(700);
-                    dP = formattedDateTime;
-                    dE = formattedExpirationDateTime;
-                    
-                    query2 = "UPDATE payment SET amount='"+aM+"', date_paid='"+dP+"', date_expiration='"+dE+"' WHERE id=" + ID;
-                    st.executeUpdate(query2);
-                }
-                    
+                    if (containsInteger(name_Label.getText())){
+                        JOptionPane.showMessageDialog(new JFrame(), "Invalid Name", "Dialog", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                        nE = name_Label.getText();
+                        if (containsIntegerWith11Digits(mobileNumberLabel.getText())){
+                            JOptionPane.showMessageDialog(new JFrame(), "Invalid Mobile Number", "Dialog", JOptionPane.ERROR_MESSAGE);
+                        }else{
+                            mR = mobileNumberLabel.getText();
+                            sX = (String) sexComboBox.getSelectedItem();
+                            if (containsString(ageLabel.getText())){
+                                JOptionPane.showMessageDialog(new JFrame(), "Invalid Age", "Dialog", JOptionPane.ERROR_MESSAGE);
+                            }else{
+                                aE = ageLabel.getText();
+                                if (containsInteger(contactNameLabel.getText())){
+                                    JOptionPane.showMessageDialog(new JFrame(), "Invalid Contact Name", "Dialog", JOptionPane.ERROR_MESSAGE);
+                                }else{
+                                    eE = contactNameLabel.getText();
+                                    if (containsIntegerWith11Digits(contactNumberLabel.getText())){
+                                        JOptionPane.showMessageDialog(new JFrame(), "Invalid Contact Number", "Dialog", JOptionPane.ERROR_MESSAGE);
+                                    }else{
+                                        eR = contactNumberLabel.getText();
+                                        pN = (String) planComboBox.getSelectedItem();
+
+                                        if("".equals(name_Label.getText())){
+                                        JOptionPane.showMessageDialog(new JFrame(), "Name is required", "Dialog", JOptionPane.ERROR_MESSAGE);
+                                        }else if("".equals(mobileNumberLabel.getText())){
+                                        JOptionPane.showMessageDialog(new JFrame(), "Mobile Number is required", "Dialog", JOptionPane.ERROR_MESSAGE);
+                                        }else if("".equals(ageLabel.getText())){
+                                        JOptionPane.showMessageDialog(new JFrame(), "Age is required", "Dialog", JOptionPane.ERROR_MESSAGE);
+                                        }else if(" ".equals(sexComboBox.getSelectedItem())){
+                                        JOptionPane.showMessageDialog(new JFrame(), "Select the following choices below", "Dialog", JOptionPane.ERROR_MESSAGE);
+                                        }else if("".equals(contactNameLabel.getText())){
+                                        JOptionPane.showMessageDialog(new JFrame(), "Name is required", "Dialog", JOptionPane.ERROR_MESSAGE);
+                                        }else if("".equals(contactNumberLabel.getText())){
+                                        JOptionPane.showMessageDialog(new JFrame(), "Number is required", "Dialog", JOptionPane.ERROR_MESSAGE);
+                                        }else if(" ".equals(planComboBox.getSelectedItem())){
+                                        JOptionPane.showMessageDialog(new JFrame(), "Select the following choices below", "Dialog", JOptionPane.ERROR_MESSAGE);
+                                          }else{
+                                            String sql2 = "UPDATE member SET name='"+nE+"', mobile_number='"+mR+"', age='"+aE+"', sex='"+sX+"', emergency_contact_name='"+eE+"', emergency_contact_number='"+eR+"', plan='"+pN+"' WHERE id=" + ID;
+                                            st.executeUpdate(sql2);
+                                            
+                                            if("Daily".equals(pN)){
+                                                aM = String.valueOf(70);
+                                                dP = formattedDateTime;
+                                                dE = formattedDateTime;
+                                                
+                                                query2 = "UPDATE payment SET amount='"+aM+"', date_paid='"+dP+"', date_expiration='"+dE+"' WHERE id=" + ID;
+                                                st.executeUpdate(query2);
+                                            
+                                            }else if("Half Month".equals(pN)){
+                                                aM = String.valueOf(400);
+                                                dP = formattedDateTime;
+                                                dE = formattedExpirationDateTime2;
+                                                
+                                                query2 = "UPDATE payment SET amount='"+aM+"', date_paid='"+dP+"', date_expiration='"+dE+"' WHERE id=" + ID;
+                                                st.executeUpdate(query2);
+                                            
+                                            }else if("Monthly".equals(pN)){
+                                                aM = String.valueOf(700);
+                                                dP = formattedDateTime;
+                                                dE = formattedExpirationDateTime;
+                                                query2 = "UPDATE payment SET amount='"+aM+"', date_paid='"+dP+"', date_expiration='"+dE+"' WHERE id=" + ID;
+                                                st.executeUpdate(query2);
+                                            }
+                                            JOptionPane.showMessageDialog(new JFrame(), "Updated", "Dialog", JOptionPane.PLAIN_MESSAGE);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                     loadData();
                 }if(notFound == 0){
-                    JOptionPane.showMessageDialog(new JFrame(), "invalid ID", "Dialog", JOptionPane.ERROR_MESSAGE);   
+                    JOptionPane.showMessageDialog(new JFrame(), "invalid ID", "Dialog", JOptionPane.ERROR_MESSAGE);
+                    
                 }
                 con.close();
             }
@@ -471,13 +516,40 @@ public class updateMember extends javax.swing.JFrame {
             System.out.println("Error " + e.getMessage());
         }
     }//GEN-LAST:event_updateButtonActionPerformed
-
+    
+    private static boolean containsString(String text) {
+        try {
+            Integer.parseInt(text);
+            return false; // No exception means it's a valid integer
+        } catch (NumberFormatException e) {
+            return true; // Exception means it contains non-integer characters
+        }
+    }
+    
+    private static boolean containsIntegerWith11Digits(String text) {
+    // Check if text consists entirely of digits
+        if (text.matches("\\d+")) {
+            // Check if the length of text is exactly 11 digits
+            return text.length() != 11; // Return true if not exactly 11 digits
+        }
+        return true; // Return true if text is not all digits
+    }
+    
+    private static boolean containsInteger(String text){
+        try{
+            Integer.parseInt(text);
+            return true;
+        } catch (NumberFormatException e){
+            return false;
+        }
+    }
+    
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         name_Label.setText("");
-        mobile_numberLabel.setText("");
+        mobileNumberLabel.setText("");
         ageLabel.setText("");
-        contactname_Label.setText("");
-        contactnumber_Label.setText("");
+        contactNameLabel.setText("");
+        contactNumberLabel.setText("");
         sexComboBox.setSelectedItem(" ");
         planComboBox.setSelectedItem(" ");
     }//GEN-LAST:event_clearButtonActionPerformed
@@ -496,24 +568,45 @@ public class updateMember extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection(url, user, pass);
             Statement st = con.createStatement();
             ID = search.getText();
-            if("".equals(ID)){
-                JOptionPane.showMessageDialog(new JFrame(), "ID is required", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }else{
-                String sql = "SELECT * FROM member WHERE id=" + ID;
-                ResultSet rs = st.executeQuery(sql);
-                while(rs.next()){
-                    notFound = 1;
-                    String sql2 = "DELETE FROM member WHERE id=" + ID;
-                    st.executeUpdate(sql2);
-                    loadData();
-                    con.close();
-                }if (notFound == 0){
-                    JOptionPane.showMessageDialog(new JFrame(), "invalid ID", "Dialog", JOptionPane.ERROR_MESSAGE);
-                }
+             if ("".equals(ID)) {
+        JOptionPane.showMessageDialog(new JFrame(), "ID is required", "Dialog", JOptionPane.ERROR_MESSAGE);
+    } else {
+        String sql = "SELECT * FROM member WHERE id=" + ID;
+        ResultSet rs = st.executeQuery(sql);
+        boolean found = false;
+
+        while (rs.next()) {
+            found = true;
+            // Show confirmation dialog
+            int option = JOptionPane.showConfirmDialog(new JFrame(), "Are you sure you want to delete?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+            
+            if (option == JOptionPane.YES_OPTION) {
+                String sql2 = "DELETE FROM member WHERE id=" + ID;
+                st.executeUpdate(sql2);
+                loadData();
+                con.close();
+                
+                search.setText("");
+                name_Label.setText("");
+                mobileNumberLabel.setText("");
+                ageLabel.setText("");
+                contactNameLabel.setText("");
+                contactNumberLabel.setText("");
+                sexComboBox.setSelectedItem(" ");
+                planComboBox.setSelectedItem(" ");
+                JOptionPane.showMessageDialog(new JFrame(), "Record deleted successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else if (option == JOptionPane.NO_OPTION){          
+                JOptionPane.showMessageDialog(new JFrame(), "Deletion cancelled", "Cancelled", JOptionPane.INFORMATION_MESSAGE);
             }
-        }catch(Exception e){
-            System.out.println("Error" + e.getMessage());
         }
+
+        if (!found) {
+            JOptionPane.showMessageDialog(new JFrame(), "Invalid ID", "Dialog", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+} catch (Exception e) {
+    System.out.println("Error" + e.getMessage());
+}
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void ProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileActionPerformed
@@ -540,9 +633,9 @@ public class updateMember extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchActionPerformed
 
-    private void mobile_numberLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobile_numberLabelActionPerformed
+    private void mobileNumberLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobileNumberLabelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mobile_numberLabelActionPerformed
+    }//GEN-LAST:event_mobileNumberLabelActionPerformed
 
     private void member_searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_member_searchButtonActionPerformed
         String ID;
@@ -563,13 +656,13 @@ public class updateMember extends javax.swing.JFrame {
             }else{
                 String sql = "SELECT * FROM member WHERE id=" + ID;
                 ResultSet rs = st.executeQuery(sql);
-                while(rs.next()){
+                while(rs.next()){             
                     name_Label.setText(rs.getString("name"));
-                    mobile_numberLabel.setText(rs.getString("mobile_number"));
+                    mobileNumberLabel.setText(rs.getString("mobile_number"));
                     ageLabel.setText(rs.getString("age"));
                     sexComboBox.setSelectedItem(rs.getString("sex"));
-                    contactname_Label.setText(rs.getString("emergency_contact_name"));
-                    contactnumber_Label.setText(rs.getString("emergency_contact_number"));
+                    contactNameLabel.setText(rs.getString("emergency_contact_name"));
+                    contactNumberLabel.setText(rs.getString("emergency_contact_number"));
                     planComboBox.setSelectedItem(rs.getString("plan"));
                     notFound = 1;
                     
@@ -583,6 +676,10 @@ public class updateMember extends javax.swing.JFrame {
             System.out.println("Error" + e.getMessage());
         }
     }//GEN-LAST:event_member_searchButtonActionPerformed
+
+    private void contactNameLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactNameLabelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contactNameLabelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -633,15 +730,15 @@ public class updateMember extends javax.swing.JFrame {
     private javax.swing.JTextField ageLabel;
     private javax.swing.JLabel age_Text;
     private javax.swing.JButton clearButton;
-    private javax.swing.JTextField contactname_Label;
-    private javax.swing.JTextField contactnumber_Label;
+    private javax.swing.JTextField contactNameLabel;
+    private javax.swing.JTextField contactNumberLabel;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel emergencycontactName_Text;
     private javax.swing.JLabel emergencycontactNumber_Text;
     private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton member_searchButton;
-    private javax.swing.JTextField mobile_numberLabel;
+    private javax.swing.JTextField mobileNumberLabel;
     private javax.swing.JLabel mobilenumber_Text;
     private javax.swing.JTextField name_Label;
     private javax.swing.JLabel name_Text;
